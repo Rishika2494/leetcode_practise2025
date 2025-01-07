@@ -5,23 +5,24 @@ class Solution {
      if(s.length()!=t.length()) return false;
      for(int i=0;i<s.length();i++)
      {
-        if(!s_t.containsKey(s.charAt(i)))
+        char cs=s.charAt(i);
+        char ct =t.charAt(i);
+        if(s_t.containsKey(cs))
         {
-            s_t.put(s.charAt(i),t.charAt(i));
-         }
-         else if(s_t.containsKey(s.charAt(i)))
-         {
-            if(s_t.get(s.charAt(i))!=t.charAt(i)) return false;
-         }
-        if(!t_s.containsKey(t.charAt(i)))
-        {
-            t_s.put(t.charAt(i),s.charAt(i));
+            if(s_t.get(cs)!=ct) return false;
         }
-        else if(t_s.containsKey(t.charAt(i)))
-         {
-            if(t_s.get(t.charAt(i))!=s.charAt(i)) return false;
-         }
-     }
-     return true;
+        else{
+             s_t.put(cs,ct);
+        }
+        if(t_s.containsKey(ct))
+        {
+            if(t_s.get(ct)!=cs) return false;
+        }
+        else
+        {
+            t_s.put(ct,cs);
+        }
     }
+    return true;
+}
 }
